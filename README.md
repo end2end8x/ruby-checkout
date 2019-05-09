@@ -1,13 +1,11 @@
 # Introduction
 Our client is an online marketplace, here is a sample of some of the products available on our site:
 
-Product code	|   Name					|	Price
-----------------------------------------------------------
-001				|   Lavender heart			|	£9.25
-
-002				|   Personalised cufflinks	|	£45.00
-
-003				|   Kids T-shirt			|	£19.95
+Product code | Name | Price
+-------------|------|------
+001 | Lavender heart | £9.25
+002 | Personalised cufflinks | £45.00
+003 | Kids T-shirt | £19.95
 
 This is just an example of products, your system should be ready to accept any kind of product.
 
@@ -84,4 +82,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Checkout project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/checkout/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Checkout project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/end2end8x/ruby-checkout/blob/master/CODE_OF_CONDUCT.md).
