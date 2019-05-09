@@ -1,5 +1,5 @@
 class Checkout
-  def add
+  def scan
 
   end
 end
