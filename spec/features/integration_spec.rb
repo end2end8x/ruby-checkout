@@ -16,9 +16,9 @@ describe 'Integration Specs' do
   let(:product_discount) { ProductDiscount.new(code: "001", require_quantity: 2, discount: 8.5, price: 9.25) }
   let(:rules) { [product_discount, total_discount] }
 
-  subject(:checkout) { Checkout.new(rules, products: products) }
-  subject(:checkout_total) { Checkout.new([total_discount], products: products) }
-  subject(:checkout_more_lavender) { Checkout.new([product_discount], products: products) }
+  subject(:checkout) { Checkout::Checkout.new(rules, products: products) }
+  subject(:checkout_total) { Checkout::Checkout.new([total_discount], products: products) }
+  subject(:checkout_more_lavender) { Checkout::Checkout.new([product_discount], products: products) }
 
   it 'Test spend over £60 get 10% off. Expected 66.78' do
     checkout_total.scan '001'

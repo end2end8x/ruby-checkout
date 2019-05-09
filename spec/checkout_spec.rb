@@ -1,6 +1,6 @@
 require_relative '../lib/checkout'
 
-describe Checkout do
+describe Checkout::Checkout do
 
   let(:basket_klass) { double :Basket_klass, new: basket }
   let(:basket) { double :Basket }

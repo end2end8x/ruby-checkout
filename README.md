@@ -45,30 +45,55 @@ Total price expected: £73.76
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/checkout`. To experiment with that code, run `bin/console` for an interactive prompt.
 
 ## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'checkout'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install checkout
+    $ bundle install
 
 ## Usage
+    $ irb
 
-TODO: Write usage instructions here
+    require_relative 'lib/checkout'  
+    require_relative 'lib/product'  
+    require_relative 'lib/rules/product_discount'  
+    require_relative 'lib/rules/total_discount'  
+
+    product_001 = Product.new(code: '001', name: 'Lavender heart', price: 9.25)  
+    product_002 = Product.new(code: '002', name: 'Personalised cufflinks', price: 45.0)   
+    product_003 = Product.new(code: '003', name: 'Kids T-shirt', price: 19.95)  
+    products = [product_001, product_002, product_003]  
+
+    total_discount = TotalDiscount.new(percent: 10, require_total: 60)  
+    product_discount = ProductDiscount.new(code: "001", require_quantity: 2, discount: 7.5, price: 9.25)  
+    rules = [product_discount, total_discount]  
+
+    checkout = Checkout.new(rules, products: products)  
+    checkout.scan '001'  
+    checkout.scan '002'  
+    checkout.scan '001'  
+    checkout.scan '003'  
+
+    price = checkout.total  
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run  
+    `bin/setup`   
+to install dependencies. Then, run  
+    `rake spec`  
+to run the tests. You can also run  
+    `bin/console`  
+for an interactive prompt that will allow you to experiment.  
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+To install this gem onto your local machine, run  
+    `bundle exec rake install`  
+To release a new version, update the version number in `checkout.gemspec`, and then run  
+    `bundle exec rake release`  
+which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+
+## Running Tests
+    $ rspec
+    
+## Travis CI
+
+    https://travis-ci.com/end2end8x/ruby-checkout
 
 ## Contributing
 
