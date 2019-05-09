@@ -93,7 +93,9 @@ which will create a git tag for the version, push git commits and tags, and push
     
 ## Travis CI
 
-    https://travis-ci.com/end2end8x/ruby-checkout
+Reports test on Travis CI at
+
+https://travis-ci.com/end2end8x/ruby-checkout
 
 ## Contributing
 
