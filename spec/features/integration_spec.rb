@@ -14,13 +14,13 @@ describe 'Integration Specs' do
 
   let(:total_discount) { TotalDiscount.new(percent: 10, require_total: 60) }
   let(:product_discount) { ProductDiscount.new(code: "001", require_quantity: 2, discount: 8.5, price: 9.25) }
-  let(:promotional_rules) { [product_discount, total_discount] }
+  let(:rules) { [product_discount, total_discount] }
 
-  subject(:checkout) { Checkout.new(promotional_rules, products: products) }
+  subject(:checkout) { Checkout.new(rules, products: products) }
   subject(:checkout_total) { Checkout.new([total_discount], products: products) }
   subject(:checkout_more_lavender) { Checkout.new([product_discount], products: products) }
 
-  it 'Test spend over £60 get 10% off' do
+  it 'Test spend over £60 get 10% off. Expected 66.78' do
     checkout_total.scan '001'
     checkout_total.scan '002'
     checkout_total.scan '003'
@@ -28,7 +28,7 @@ describe 'Integration Specs' do
     expect(checkout_total.total).to eq 66.78
   end
 
-  it 'Test buy 2 or more lavender hearts' do
+  it 'Test buy 2 or more lavender hearts. Expected 36.95' do
     checkout_more_lavender.scan '001'
     checkout_more_lavender.scan '003'
     checkout_more_lavender.scan '001'
@@ -36,7 +36,7 @@ describe 'Integration Specs' do
     expect(checkout_more_lavender.total).to eq 36.95
   end
 
-  it 'Combine rules discount applied' do
+  it 'Combine rules discount applied. Expected 73.76' do
     checkout.scan '001'
     checkout.scan '002'
     checkout.scan '001'
