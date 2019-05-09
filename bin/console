@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 
-require_relative '../lib/checkout'
-
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.
 
@@ -11,3 +9,25 @@ Pry.start
 
 # require "irb"
 # IRB.start(__FILE__)
+
+# require_relative 'lib/checkout'
+# require_relative 'lib/product'
+# require_relative 'lib/rules/product_discount'
+# require_relative 'lib/rules/total_discount'
+#
+# product_001 = Product.new(code: '001', name: 'Lavender heart', price: 9.25)
+# product_002 = Product.new(code: '002', name: 'Personalised cufflinks', price: 45.0)
+# product_003 = Product.new(code: '003', name: 'Kids T-shirt', price: 19.95)
+# products = [product_001, product_002, product_003]
+#
+# total_discount = TotalDiscount.new(percent: 10, require_total: 60)
+# product_discount = ProductDiscount.new(code: "001", require_quantity: 2, discount: 7.5, price: 9.25)
+# rules = [product_discount, total_discount]
+#
+# checkout = Checkout.new(rules, products: products)
+# checkout.scan '001'
+# checkout.scan '002'
+# checkout.scan '001'
+# checkout.scan '003'
+#
+# price = checkout.total
